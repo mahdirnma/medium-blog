@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AuthController extends Controller
 {
@@ -16,7 +17,9 @@ class AuthController extends Controller
     {
         $myData = $request->only('email', 'password');
         if (Auth::attempt($myData)) {
-            return to_route('admin.dashboard');
+            if (Gate::allows('isAdmin')) {
+                return to_route('admin.dashboard');
+            }
         }
         return to_route('login.form');
     }
