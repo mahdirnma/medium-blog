@@ -70,6 +70,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->update(['is_active'=>0]);
+        return redirect()->route('categories.index');
     }
 }
