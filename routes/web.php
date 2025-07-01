@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserCotroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard',[UserCotroller::class,'dashboard'])->name('admin.dashboard');
+});
 Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
+Route::post('/login',[AuthController::class,'login'])->name('login');
