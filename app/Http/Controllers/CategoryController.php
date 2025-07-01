@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('is_active',1)->paginate(2);
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
