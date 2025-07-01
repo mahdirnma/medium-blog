@@ -11,6 +11,11 @@ class TagController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('can:isAdmin')->only(['create', 'store', 'edit', 'update', 'destroy','index']);
+    }
+
     public function index()
     {
         $tags = Tag::where('is_active',1)->paginate(2);
@@ -50,7 +55,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit',compact('tag'));
     }
 
     /**
@@ -58,7 +63,11 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $status=$tag->update($request->all());
+        if($status){
+            return redirect()->route('tags.index');
+        }
+        return redirect()->back();
     }
 
     /**

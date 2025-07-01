@@ -11,6 +11,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('can:isAdmin')->only(['create', 'store', 'edit', 'update', 'destroy','index']);
+    }
     public function index()
     {
         $categories = Category::where('is_active',1)->paginate(2);
