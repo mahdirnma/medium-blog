@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::where('is_active',1)->paginate(2);
+        return view('admin.tags.index',compact('tags'));
     }
 
     /**
