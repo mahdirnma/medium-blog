@@ -66,7 +66,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::where('is_active',1)->get();
+        $tags = Tag::where('is_active',1)->get();
+        $writers=User::where('role',2)->get();
+        return view('admin.posts.edit',compact('post','tags','categories','writers'));
+
     }
 
     /**
@@ -74,7 +78,17 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $status=$post->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'category_id'=>$request->category_id,
+            'user_id'=>$request->writer_id
+        ]);
+        if($status){
+            $post->tags()->sync($request->tags);
+            return redirect()->route('posts.index');
+        }
+        return redirect()->back();
     }
 
     /**

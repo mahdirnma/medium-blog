@@ -29,13 +29,13 @@
                                 <form action="{{route('posts.destroy',compact('post'))}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="text-green-600">delete</button>
+                                    <button type="submit" class="text-green-600 cursor-pointer">delete</button>
                                 </form>
                             </td>
                             <td class="text-center">
                                 <form action="{{route('posts.edit',compact('post'))}}" method="get">
                                     @csrf
-                                    <button type="submit" class="text-cyan-600">update</button>
+                                    <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
                                 </form>
                             </td>
                             <td class="text-center">{{$post->user->name}}</td>
