@@ -12,7 +12,7 @@
 <div class="w-svw h-svh flex justify-center items-center bg-gray-200">
     <div class="w-2/6 h-5/6 bg-white rounded-xl flex flex-col items-center justify-start">
         <h1 class="text-3xl pt-8">لاگین</h1>
-        <form action="{{route('login')}}" method="post" class="w-5/6 flex flex-col items-end justify-start mt-10">
+        <form action="{{--{{route('login')}}--}}" method="post" class="w-5/6 flex flex-col items-end justify-start mt-10">
             @csrf
             <label for="email" class="mt-10">ایمیل</label>
             <input type="email" name="email" id="email" class="w-full h-10 bg-gray-100 rounded mt-3">
@@ -26,7 +26,7 @@
             @endif
             <input type="submit" value="ورود" class="mt-10 w-full h-12 text-gray-100 bg-gray-600 rounded  cursor-pointer">
         </form>
-        <a href="{{route('register.form')}}" class="mt-10">ثبت نام نکرده اید؟</a>
+        <a href="{{--{{route('register.form')}}--}}" class="mt-10">ثبت نام نکرده اید؟</a>
     </div>
 </div>
 </body>
