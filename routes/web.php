@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserCotroller;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[UserCotroller::class,'dashboard'])->name('admin.dashboard');
+
+    Route::resource('posts', PostController::class);
 });
 Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
 Route::post('/login',[AuthController::class,'login'])->name('login');
