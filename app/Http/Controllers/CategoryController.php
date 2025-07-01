@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -58,7 +58,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $status = $category->update($request->validated());
+        if($status){
+            return redirect()->route('categories.index');
+        }
+        return redirect()->back();
     }
 
     /**
