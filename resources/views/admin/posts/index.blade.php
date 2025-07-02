@@ -15,6 +15,7 @@
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
                         <td class="text-center">delete</td>
                         <td class="text-center">update</td>
+                        <td class="text-center">is published</td>
                         <td class="text-center">writer</td>
                         <td class="text-center">tags</td>
                         <td class="text-center">category</td>
@@ -36,6 +37,13 @@
                                 <form action="{{route('posts.edit',compact('post'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
+                                </form>
+                            </td>
+                            <td class="text-center">
+                                <form action="{{route('posts.publish',compact('post'))}}" method="post">
+                                    @csrf
+                                    @method('patch')
+                                    <button type="submit" class="text-fuchsia-600 cursor-pointer">{{$post->published?'Yes':'No'}}</button>
                                 </form>
                             </td>
                             <td class="text-center">{{$post->user->name}}</td>

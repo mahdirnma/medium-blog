@@ -15,9 +15,16 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function __construct(){
-        $this->middleware('can:isAdmin')->only(['index','create','store','edit','update','destroy']);
+        $this->middleware('can:isAdmin')->only(['publish','index','create','store','edit','update','destroy']);
     }
-
+    public function publish(Post $post)
+    {
+        if ($post->published==1)
+            $post->update(['published'=>0]);
+        else
+            $post->update(['published'=>1]);
+        return redirect()->back();
+    }
     public function index()
     {
         $posts = Post::where('is_active',1)->paginate(2);

@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[UserCotroller::class,'dashboard'])->name('admin.dashboard');
 
     Route::resource('posts', PostController::class);
+    Route::patch('/posts/{post}/publish',[PostController::class,'publish'])->name('posts.publish');
     Route::resource('categories', CategoryController::class);
     Route::resource('tags', TagController::class);
     Route::get('/writers/posts',[UserCotroller::class,'index'])->name('writer.posts.index');
@@ -29,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/writers/posts/{post}/edit',[UserCotroller::class,'edit'])->name('writer.posts.edit');
     Route::put('/writers/posts/{post}/update',[UserCotroller::class,'update'])->name('writer.posts.update');
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-
 });
 Route::middleware('guest')->group(function () {
     Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
