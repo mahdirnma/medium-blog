@@ -17,6 +17,12 @@ class PostController extends Controller
     public function __construct(){
         $this->middleware('can:isAdmin')->only(['publish','index','create','store','edit','update','destroy']);
     }
+
+    public function dashboard()
+    {
+        $posts = Post::where('is_active',1)->where('published',1)->paginate(2);
+        return view('users.index',compact('posts'));
+    }
     public function publish(Post $post)
     {
         if ($post->published==1)

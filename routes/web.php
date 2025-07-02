@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [PostController::class, 'dashboard'])->name('user.dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[UserCotroller::class,'dashboard'])->name('admin.dashboard');
-
     Route::resource('posts', PostController::class);
     Route::patch('/posts/{post}/publish',[PostController::class,'publish'])->name('posts.publish');
     Route::resource('categories', CategoryController::class);
