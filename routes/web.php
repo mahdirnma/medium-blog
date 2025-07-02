@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('tags', TagController::class);
     Route::get('/writers/posts',[UserCotroller::class,'index'])->name('writer.posts.index');
+    Route::get('/writers/posts/create',[UserCotroller::class,'create'])->name('writer.posts.create');
+    Route::post('/writers/posts/store',[UserCotroller::class,'store'])->name('writer.posts.store');
 });
 Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
 Route::post('/login',[AuthController::class,'login'])->name('login');

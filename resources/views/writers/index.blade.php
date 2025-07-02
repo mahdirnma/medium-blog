@@ -6,7 +6,7 @@
     <div class="w-full h-[88%] bg-gray-200 flex items-center justify-center">
         <div class="w-[90%] h-5/6 bg-white rounded-xl pt-3 flex flex-col items-center">
             <div class="w-[90%] h-1/5 flex justify-between items-center border-b">
-                <a href="{{route('posts.create')}}" class="px-10 py-3 rounded-xl font-light text-white bg-gray-800">add post +</a>
+                <a href="{{route('writer.posts.create')}}" class="px-10 py-3 rounded-xl font-light text-white bg-gray-800">add post +</a>
                 <h2 class="text-xl">post</h2>
             </div>
             <div class="w-[90%] h-3/5 flex flex-col justify-center">
