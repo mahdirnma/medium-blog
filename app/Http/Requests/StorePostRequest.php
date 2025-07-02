@@ -25,7 +25,7 @@ class StorePostRequest extends FormRequest
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
             'category_id' => 'required',
-            'writer_id' => 'required',
+//            'writer_id' => 'required',
             'tags' => 'required',
         ];
     }

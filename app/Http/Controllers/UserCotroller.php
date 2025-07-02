@@ -43,4 +43,23 @@ class UserCotroller extends Controller
         }
         return redirect()->back();
     }
+
+    public function edit(Post $post)
+    {
+        $categories = Category::where('is_active',1)->get();
+        $tags = Tag::where('is_active',1)->get();
+        return view('writers.edit',compact('categories','tags','post'));
+    }
+    public function update(StorePostRequest $request, Post $post){
+        $status=$post->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'category_id'=>$request->category_id,
+        ]);
+        if ($status){
+            $post->tags()->sync($request->tags);
+            return redirect()->route('writer.posts.index');
+        }
+        return redirect()->back();
+    }
 }

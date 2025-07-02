@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/writers/posts',[UserCotroller::class,'index'])->name('writer.posts.index');
     Route::get('/writers/posts/create',[UserCotroller::class,'create'])->name('writer.posts.create');
     Route::post('/writers/posts/store',[UserCotroller::class,'store'])->name('writer.posts.store');
+    Route::get('/writers/posts/{post}/edit',[UserCotroller::class,'edit'])->name('writer.posts.edit');
+    Route::put('/writers/posts/{post}/update',[UserCotroller::class,'update'])->name('writer.posts.update');
 });
 Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
 Route::post('/login',[AuthController::class,'login'])->name('login');

@@ -24,7 +24,7 @@
                     @foreach($posts as $post)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('posts.edit',compact('post'))}}--}}" method="get">
+                                <form action="{{route('writer.posts.edit',compact('post'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
                                 </form>
