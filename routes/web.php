@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/writers/posts/store',[UserCotroller::class,'store'])->name('writer.posts.store');
     Route::get('/writers/posts/{post}/edit',[UserCotroller::class,'edit'])->name('writer.posts.edit');
     Route::put('/writers/posts/{post}/update',[UserCotroller::class,'update'])->name('writer.posts.update');
+    Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+
 });
-Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
-Route::post('/login',[AuthController::class,'login'])->name('login');
+Route::middleware('guest')->group(function () {
+    Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
+    Route::post('/login',[AuthController::class,'login'])->name('login');
+});

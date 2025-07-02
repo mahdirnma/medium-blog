@@ -18,11 +18,10 @@
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('posts.index')}}">posts</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('categories.index')}}">categories</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('tags.index')}}">tags</a></li>
-{{--                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('writers.index')}}">writers</a></li>--}}
                 </ul>
             </nav>
         </div>
-        <form action="{{--{{route('logout')}}--}}" method="post">
+        <form action="{{route('logout')}}" method="post">
             @csrf
             <button type="submit" class="text-red-700 font-bold cursor-pointer"><- logout</button>
         </form>

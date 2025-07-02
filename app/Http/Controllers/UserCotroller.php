@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserCotroller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:isUser')->only(['index','create','store','edit','update']);
+        $this->middleware('can:isAdmin')->only('dashboard');
+    }
+
     public function dashboard()
     {
         return view('admin.dashboard');

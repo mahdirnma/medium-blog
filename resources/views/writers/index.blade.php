@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app2')
 @section('title')
     writer's posts
 @endsection
