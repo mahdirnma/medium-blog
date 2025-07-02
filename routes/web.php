@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('tags', TagController::class);
+    Route::get('/writers/posts',[UserCotroller::class,'index'])->name('writer.posts.index');
 });
 Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
 Route::post('/login',[AuthController::class,'login'])->name('login');

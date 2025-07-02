@@ -20,6 +20,9 @@ class AuthController extends Controller
             if (Gate::allows('isAdmin')) {
                 return to_route('admin.dashboard');
             }
+            if (Gate::allows('isUser')) {
+                return to_route('writer.posts.index');
+            }
         }
         return to_route('login.form');
     }
